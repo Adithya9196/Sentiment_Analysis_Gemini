@@ -5,8 +5,8 @@ class SentimentProvider with ChangeNotifier{
   String status = "Positive";
 
   final model = GenerativeModel(
-      model: 'gemini-2.5-flash',
-      apiKey: ''
+    model: dotenv.env['GEMINI_MODEL']!,
+    apiKey: dotenv.env['GEMINI_API_KEY']!,
   );
 
   bool isLoading = false;
