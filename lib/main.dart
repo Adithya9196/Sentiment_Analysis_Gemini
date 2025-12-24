@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:sentiment_analysis/Sentiment_provider.dart';
 import 'package:sentiment_analysis/sentiment_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
