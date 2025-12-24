@@ -1,16 +1,27 @@
-# sentiment_analysis
+# Sentiment Analysis App using Gemini AI 
 
-A new Flutter project.
+A Flutter-based Sentiment Analysis application that analyzes user input text and determines the sentiment (Positive, Negative, or Neutral) using **Google Gemini AI**.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔍 Text-based Sentiment Analysis  
+- 🤖 Powered by Google Gemini AI  
+- 🎨 Clean and responsive Flutter UI  
+- 🔐 Secure API key handling using environment variables  
+- 🚀 Fast and accurate sentiment results  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+
+- **Frontend:** Flutter (Dart)
+- **AI Model:** Google Gemini (`gemini-2.5- flash`)
+- **State Management:** Provider
+- **Environment Management:** flutter_dotenv
+
+---
+
+## 📂 Project Structure
+
