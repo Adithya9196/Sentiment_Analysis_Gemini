@@ -3,14 +3,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 class SentimentProvider with ChangeNotifier{
-  String status = "Positive";
-
   final model = GenerativeModel(
     model: dotenv.env['GEMINI_MODEL']!,
     apiKey: dotenv.env['GEMINI_API_KEY']!,
   );
 
+
   bool isLoading = false;
+  String? status;
+
 
   Future<void> analyzeSentiment(String text) async{
     if(text.isEmpty) return;

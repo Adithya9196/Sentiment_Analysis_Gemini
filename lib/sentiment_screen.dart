@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sentiment_analysis/Sentiment_provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SentimentScreen extends StatelessWidget {
   const SentimentScreen({super.key});
@@ -9,21 +10,23 @@ class SentimentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SentimentProvider sentimentProvider = context.watch<SentimentProvider>();
 
-    String status = sentimentProvider.status;
+    String? status = sentimentProvider.status;
 
     TextEditingController controller = TextEditingController();
 
     String emoji = "😊";
     Color color = Colors.green;
 
-    switch (status.toLowerCase()) {
+    switch (status?.toLowerCase()) {
       case 'positive':
         emoji = '😊';
         color = Colors.green;
+        break;
 
       case 'negative':
         emoji = '😠';
         color = Colors.red;
+        break;
 
       case 'neutral':
         emoji = '😐';
@@ -78,9 +81,50 @@ class SentimentScreen extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            Container(
-              // height: 200,
-              // width: 200,
+
+            if(sentimentProvider.status != null)
+            sentimentProvider.isLoading
+            ? Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                padding: EdgeInsets.all(45),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: Colors.grey[300]!,width: 3),
+                  color: Colors.white54
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Emoji Container
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle
+                      ),
+                    ),
+
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    // Text Container
+                    Container(
+                      width: 120,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(4)
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+            : Container(
               padding: EdgeInsets.all(45),
               decoration: BoxDecoration(
                   color: color.withValues(alpha: .3),
@@ -93,7 +137,7 @@ class SentimentScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 45),
                   ),
                   Text(
-                    status,
+                    status!,
                     style: TextStyle(fontSize: 25),
                   )
                 ],
